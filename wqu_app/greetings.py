@@ -9,11 +9,12 @@ def retrieve_ip_address():
 
 def get_geolocation(ip_address):
     """return cord"""
-    response = requests.get(f"https://ipinfo.io/{ip_address}").json()
-#     print(response['loc'])
-#     cords = response.json()['loc']
-#     lat, lon = cords.split(',')
-    return [float(coord) for coord in response['loc'].split(',')]
+    response = requests.get(f"https://ipinfo.io/{ip_address}")
+    # print(response['loc'])
+    cords = response.json()['loc']
+    # lat, lon = cords.split(',')
+    # return [float(coord) for coord in response['loc'].split(',')]
+    return cords
 
 
 def get_weather(coords):
@@ -32,8 +33,8 @@ def greet(ip_address):
     #ip_address = retrieve_ip_address()
     coords = get_geolocation(ip_address)
     weather_data = get_weather(coords)
-    
     return weather_data
+    
     
 
 # if __name__=='__main__':
